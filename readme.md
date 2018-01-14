@@ -83,11 +83,11 @@ The system which will securely generate, store and share cryptographic keys.
 
 Our key management system is multi-tiered, and all the information is saved in a KSF file.
 
-1. _The Password_ – most likely not very secure. To mitigate this issue, we use PBKDF2 with 100,000 iterations and 16-byte random salt in order to make dictionary attacks less easy. We chose 100,000 because a typical computer can do that many iterations without taking too long, while still being over 10,000 which is the recommended minimum. For the hashing, we chose SHA-256 over SHA-512 for its higher memory usage, making it potentially harder to create a quick dictionary. The key derived from the password is used to decrypt the next tier:
+1. _The Password_ â€“ most likely not very secure. To mitigate this issue, we use PBKDF2 with 100,000 iterations and 16-byte random salt in order to make dictionary attacks less easy. We chose 100,000 because a typical computer can do that many iterations without taking too long, while still being over 10,000 which is the recommended minimum. For the hashing, we chose SHA-256 over SHA-512 for its higher memory usage, making it potentially harder to create a quick dictionary. The key derived from the password is used to decrypt the next tier:
 
-1. _The Master Key_ – 2048-bit RSA. The minimum required for security, but enough for this project. Both the public key and private are stored together, but the private key (and other secret stuff) is encrypted using AES-CTR, with the aforementioned derived key and another random 16 bytes for the IV. There is no need for authentication, as any errors will become obvious if the decrypted key does nothing. To check if the password is correct, the first 4 bytes in the plaintext will be &quot;GOOD&quot;. If that is messed with so that a password will be incorrectly identified as correct, the key simply won&#39;t decrypt properly, and the files will remain secure. It is still possible however, to manually destroy the keys or files using a text editor, so keep the files safe and backed-up. The decrypted private key will be used to decrypt each of the keys present in the next tier.
+1. _The Master Key_ â€“ 2048-bit RSA. The minimum required for security, but enough for this project. Both the public key and private are stored together, but the private key (and other secret stuff) is encrypted using AES-CTR, with the aforementioned derived key and another random 16 bytes for the IV. There is no need for authentication, as any errors will become obvious if the decrypted key does nothing. To check if the password is correct, the first 4 bytes in the plaintext will be &quot;GOOD&quot;. If that is messed with so that a password will be incorrectly identified as correct, the key simply won&#39;t decrypt properly, and the files will remain secure. It is still possible however, to manually destroy the keys or files using a text editor, so keep the files safe and backed-up. The decrypted private key will be used to decrypt each of the keys present in the next tier.
 
-1. _The File Keys_ – each of them is the key for decrypting their respective file. Each key is unique and randomly generated. The files are encrypted using GCM to allow error checking with a TAG that won&#39;t give away information about the plaintext. The keys are encrypted using the Master Key and stored in the KSF file, along with the file ID and TAG. Both the ID and TAG will be stored in the file as well, and will be used to verify which key belongs to which file.
+1. _The File Keys_ â€“ each of them is the key for decrypting their respective file. Each key is unique and randomly generated. The files are encrypted using GCM to allow error checking with a TAG that won&#39;t give away information about the plaintext. The keys are encrypted using the Master Key and stored in the KSF file, along with the file ID and TAG. Both the ID and TAG will be stored in the file as well, and will be used to verify which key belongs to which file.
 
 # Procedure
 
@@ -97,7 +97,7 @@ This is done by:
 
 1. Finding the target process&#39; PID by taking a snapshot of the current running processes and finding the one who&#39;s name fits the name of the program we want.
 2. Allocating memory in the target process that will contain the path of the DLL to be injected
-3. Finding the address of the _LoadLibrary_ function (which definitely exists in the process – it is in kernel32.dll). This function can allocate memory for, and load DLLs into the program.
+3. Finding the address of the _LoadLibrary_ function (which definitely exists in the process â€“ it is in kernel32.dll). This function can allocate memory for, and load DLLs into the program.
 4. Creating a new thread in the target process that starts at the _LoadLibrary_ function&#39;s address, and has the allocated DLL path address as an argument. This will initiate the loading of the DLL.
 5. The main function in the DLL will be invoked by the operating system, and from there we can force the target process to do anything we want.
 
@@ -108,8 +108,8 @@ The method we used to create a hook uses the following steps:
 1. Using IDA, (with the help of the program&#39;s source code) we find the functions that are optimal hooking candidates (In our case these are the load and save functions).
 2. Since hooking involves adding a jmp command (and we don&#39;t want to mess with the offsets of the entire program), our jmp needs to overwrite some command. Our victim command (or group of commands) must have a size of at least 5 bytes (jmp is 5 bytes), and must be in a location where we can easily extract and/or implant the information we want.
 3. We take note of the relative addresses of these commands, as well as their respective size in bytes.
-4. In the injected DLL (who is now allowed to edit the memory), we find the base address of the EXE that called it – our target program
-5. for each of the addresses we noted above, we find the absolute address by adding them with the base address. we also find the address we will return to when we&#39;re done – which is just adding the size of the overwritten commands to the absolute
+4. In the injected DLL (who is now allowed to edit the memory), we find the base address of the EXE that called it â€“ our target program
+5. for each of the addresses we noted above, we find the absolute address by adding them with the base address. we also find the address we will return to when we&#39;re done â€“ which is just adding the size of the overwritten commands to the absolute
 6. we create a function for each of the hook spots, but we must also replace the commands we will overwrite, as well as make sure no registers are changed due to our actions. Failing to do so will probably cause the target program to crash, if not malfunction. For this we use naked inline assembly, so the compiler won&#39;t add potentially destructive &quot;fixes&quot;. At the end of the function we put a jmp that will go back to the original hooked function, restoring the flow of the program.
 7. We calculate the relative address of the function we created compared to the hook spot (while taking into account that jmp is 5 bytes).
 8. For each candidate, we overwrite the commands, first with E9 (jmp), and then with the relative address we just calculated. This will force the program to go to our assembly function, which will in turn call our real function written in c++. This redirection will be applied for the time that the program is running, so every time the hooked function is called, it will redirect to our assembly and then go back to running as usual.
@@ -141,11 +141,11 @@ We defined profiles that can be personalized per-person, each having a unique as
 
 # Features
 
-- --One password to rule them all – _no need to remember how to unlock every one of your files. Just one password and your files are secure._
-- --Easy password change – _changing your password is as easy as clicking a button. Conveniently found every time you enter a password_
-- --Simple, friendly interface – _take your notes. simple as that. No hassle_
-- --Easy activation – _just click on_ _launch_ _and you&#39;re good to go_
-- --Full multi-tab support – _open any number of tabs you want. All of them are secure_
+- --One password to rule them all â€“ _no need to remember how to unlock every one of your files. Just one password and your files are secure._
+- --Easy password change â€“ _changing your password is as easy as clicking a button. Conveniently found every time you enter a password_
+- --Simple, friendly interface â€“ _take your notes. simple as that. No hassle_
+- --Easy activation â€“ _just click on_ _launch_ _and you&#39;re good to go_
+- --Full multi-tab support â€“ _open any number of tabs you want. All of them are secure_
 
 # Known Bugs
 
@@ -172,6 +172,5 @@ We defined profiles that can be personalized per-person, each having a unique as
 | _Stack Overflow_ | _https://stackoverflow.com/questions/21718027/getmodulehandlenull-vs-hinstance_ _https://stackoverflow.com/questions/33225800/disable-control-character-input-from-keyboard-shortcuts-in-notepad_ _https://stackoverflow.com/questions/1074362/embedded-resource-in-c_ _https://stackoverflow.com/questions/27816110/usage-of-getdlgitemtext-in-win32-apps_ _https://stackoverflow.com/questions/61634/windows-api-dialogs-without-using-resource-files_  |
 | _Wikipedia_ | _https://en.wikipedia.org/wiki/Galois/Counter\_Mode_ _https://en.wikipedia.org/wiki/Block\_cipher_ _https://en.wikipedia.org/wiki/Block\_cipher\_mode\_of\_operation_ _https://en.wikipedia.org/wiki/Cryptographic\_hash\_function_ _https://en.wikipedia.org/wiki/DLL\_injection_ _https://en.wikipedia.org/wiki/Hash\_function_ _https://en.wikipedia.org/wiki/Key\_derivation\_function_ _https://en.wikipedia.org/wiki/Key\_management_ _https://en.wikipedia.org/wiki/PBKDF2_ _https://en.wikipedia.org/wiki/Salt\_(cryptography)_ _https://en.wikipedia.org/wiki/Stream\_cipher_  |
 | _YouTube_ | _https://www.youtube.com/watch?v=jTl3MFVKSUM_  |
-|   | _https://www.youtube.com/watch?v=b1ahj347pDc_ |
-|   |   |
-|   | _https://www.youtube.com/watch?v=knPMS01QbxU_  |
+_https://www.youtube.com/watch?v=b1ahj347pDc_ 
+_https://www.youtube.com/watch?v=knPMS01QbxU_  |
