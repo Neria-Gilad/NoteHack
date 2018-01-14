@@ -1,0 +1,21 @@
+1. NoteHack++
+	This folder contains the source code of the project.
+	We used Visual Studio 2017 to write it.
+
+2. Release
+	This folder contains everything you need to run the project, no malware!
+
+3. npp.7.5.1.Installer.exe
+	for your convenience, since our project will work only with this version (probably)
+
+4. Report.pdf
+	Self explanatory (literally)
+
+5. readme.md
+	Markdown verison of the report. GitHub users love it!
+
+6. NoteHack++ Presentation.pdf
+	PDF verison of the presentation we have presented in 14.1
+
+7. What are all these files.txt
+	explaining this will create an infinite loop and probably break the universe
