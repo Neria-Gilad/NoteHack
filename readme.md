@@ -141,16 +141,16 @@ We defined profiles that can be personalized per-person, each having a unique as
 
 # Features
 
-- --One password to rule them all – _no need to remember how to unlock every one of your files. Just one password and your files are secure._
-- --Easy password change – _changing your password is as easy as clicking a button. Conveniently found every time you enter a password_
-- --Simple, friendly interface – _take your notes. simple as that. No hassle_
-- --Easy activation – _just click on_ _launch_ _and you&#39;re good to go_
-- --Full multi-tab support – _open any number of tabs you want. All of them are secure_
+- One password to rule them all – _no need to remember how to unlock every one of your files. Just one password and your files are secure._
+- Easy password change – _changing your password is as easy as clicking a button. Conveniently found every time you enter a password_
+- Simple, friendly interface – _take your notes. simple as that. No hassle_
+- Easy activation – _just click on_ _launch_ _and you&#39;re good to go_
+- Full multi-tab support – _open any number of tabs you want. All of them are secure_
 
 # Known Bugs
 
-- --When a password prompt is open, using the &quot;_ctrl+shift+esc&quot;_ shortcut to open Task Manager (or anything replacing it) will cause a crash. Opening Task Manager any other way has no such effect on the program.
-- --If a version of notepad++ other than 7.5.1 is installed, there may be unknown side effects or failure.
+- When a password prompt is open, using the &quot;_ctrl+shift+esc&quot;_ shortcut to open Task Manager (or anything replacing it) will cause a crash. Opening Task Manager any other way has no such effect on the program.
+- If a version of notepad++ other than 7.5.1 is installed, there may be unknown side effects or failure.
 
 # Bibliography
 
@@ -171,6 +171,6 @@ We defined profiles that can be personalized per-person, each having a unique as
 | _Stack Exchange_ | _http://security.blogoverflow.com/2013/09/about-secure-password-hashing/_ _https://security.stackexchange.com/questions/71766/can-the-iv-salt-be-the-same_ _https://crypto.stackexchange.com/questions/47517/is-pbkdf2-rfc-2898-broken-because-sha1-is-broken_ _https://crypto.stackexchange.com/questions/48407/should-i-be-using-pkcs1-v1-5-or-pss-for-rsa-signatures_ _https://crypto.stackexchange.com/questions/35214/security-of-aes-ctr-with-multiple-messages-containing-the-same-known-plain-text_  |
 | _Stack Overflow_ | _https://stackoverflow.com/questions/21718027/getmodulehandlenull-vs-hinstance_ _https://stackoverflow.com/questions/33225800/disable-control-character-input-from-keyboard-shortcuts-in-notepad_ _https://stackoverflow.com/questions/1074362/embedded-resource-in-c_ _https://stackoverflow.com/questions/27816110/usage-of-getdlgitemtext-in-win32-apps_ _https://stackoverflow.com/questions/61634/windows-api-dialogs-without-using-resource-files_  |
 | _Wikipedia_ | _https://en.wikipedia.org/wiki/Galois/Counter\_Mode_ _https://en.wikipedia.org/wiki/Block\_cipher_ _https://en.wikipedia.org/wiki/Block\_cipher\_mode\_of\_operation_ _https://en.wikipedia.org/wiki/Cryptographic\_hash\_function_ _https://en.wikipedia.org/wiki/DLL\_injection_ _https://en.wikipedia.org/wiki/Hash\_function_ _https://en.wikipedia.org/wiki/Key\_derivation\_function_ _https://en.wikipedia.org/wiki/Key\_management_ _https://en.wikipedia.org/wiki/PBKDF2_ _https://en.wikipedia.org/wiki/Salt\_(cryptography)_ _https://en.wikipedia.org/wiki/Stream\_cipher_  |
-| _YouTube_ | _https://www.youtube.com/watch?v=jTl3MFVKSUM_  |
+| _YouTube_ | _https://www.youtube.com/watch?v=jTl3MFVKSUM_  
 _https://www.youtube.com/watch?v=b1ahj347pDc_ 
 _https://www.youtube.com/watch?v=knPMS01QbxU_  |
