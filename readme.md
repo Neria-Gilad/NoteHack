@@ -1,6 +1,9 @@
 # NoteHack++ -  Securing an Editor
 # ____________________________________
 
+Developed by [**Neria Tzidkani**](http://homedir.jct.ac.il/~ntzidkan) & [**Gilad Weiss**](http://homedir.jct.ac.il/~giladnac), software engineering students at JCT.
+Special thanks to our instructor **Arie Haenel**.
+
 # Abstract
 
 Every running program has a process. If one can inject some code into a running process, he would have the power to &quot;convince&quot; that process to run the code for him. This power could be used for good or for evil. The injected code could be anything; it can be added security, or a malicious backdoor. It can be new functionality, or it can cause the program to crash. In our project, we use injection to add some crypto functionality to the well-known text editor &quot;_notepad++_&quot;.
