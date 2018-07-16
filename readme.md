@@ -1,8 +1,7 @@
 # NoteHack++ -  Securing an Editor
-# ____________________________________
 
-Developed by [**Neria Tzidkani**](https://neriat.github.io) & [**Gilad Weiss**](http://homedir.jct.ac.il/~giladnac), software engineering students at JCT.
-Special thanks to our instructor **Arie Haenel**.
+> Developed by [**Neria Tzidkani**](https://neriat.github.io) & [**Gilad Weiss**](http://homedir.jct.ac.il/~giladnac), software engineering students at JCT.
+> Special thanks to our instructor **Arie Haenel**.
 
 # Abstract
 
